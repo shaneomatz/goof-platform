@@ -4,8 +4,8 @@
 
     <groupId>io.github.snyk</groupId>
     <artifactId>todolist-mvc</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>Todolist MVC parent module</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Java Goof :: TodoList Goof</name>
     <description>A vulnerable demo application, initially based on Ben Hassine's TodoMVC.</description>
     <url>https://github.com/snyk/java-goof</url>
 
@@ -23,6 +23,24 @@
         <module>todolist-web-struts</module>
     </modules>
     <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
 
     <licenses>
         <license>
@@ -62,7 +80,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>3.2.3</version>
                     <configuration>
                         <warName>todolist</warName>
                     </configuration>

@@ -3,12 +3,12 @@
     <parent>
         <artifactId>todolist-mvc</artifactId>
         <groupId>io.github.snyk</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>todolist-web-struts</artifactId>
     <packaging>war</packaging>
-    <name>todolist-web-struts Maven Webapp</name>
+    <name>Java Goof :: Todolist Goof :: Todolist Web Struts</name>
 
     <dependencies>
 
@@ -21,7 +21,18 @@
                     <artifactId>javaee-web-api</artifactId>
                 </exclusion>
             </exclusions>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.7</version>
         </dependency>
 
         <!-- javaee web api -->
@@ -32,39 +43,18 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Axis JAXRPC -->
-        <dependency>
-            <groupId>org.apache.axis</groupId>
-            <artifactId>axis-jaxrpc</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <!-- Axis SAAJ -->
-        <dependency>
-            <groupId>org.apache.axis</groupId>
-            <artifactId>axis-saaj</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <!-- Axis WSDL4J -->
-        <dependency>
-            <groupId>axis</groupId>
-            <artifactId>axis-wsdl4j</artifactId>
-            <version>1.5.1</version>
-        </dependency>
-
         <!-- spring web -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.2.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Struts 2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.3.20</version>
+            <version>${struts2.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>asm</artifactId>
@@ -76,7 +66,7 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
-            <version>2.3.20</version>
+            <version>${struts2.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
