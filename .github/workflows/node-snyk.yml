@@ -1,14 +1,34 @@
-name: Example workflow for Node using Snyk
+name: “Snyk Code Scan”
 on: push
 jobs:
-  security:
+  Pipeline-Job:
+    # Configure Environment @2
+    name: ‘Snyk Code Scan’
     runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        continue-on-error: true # To make sure that SARIF upload gets called
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --file=SCA/JS/package.json
+    # Checkout Code
+    - name: Checkout Code
+      uses: actions/checkout@v1
+    # Install and Authenticate to Snyk
+    - name: Install Snyk & Authenticate
+      run: |
+         sudo npm install -g snyk
+         snyk auth ${SNYK_TOKEN}
+    # Run Snyk Code #3
+    - name: Run Snyk Code
+      run: |
+        snyk code test --sarif  > results.sarif
+      continue-on-error: true
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        # Path to SARIF file relative to the root of the repository #4
+        sarif_file: results.sarif
+        # Archive Snyk Code Coverage Results
+    - name: Archive Snyk Code Coverage Results
+      uses: actions/upload-artifact@v2
+      with:
+          name: Archive Snyk Code Coverage Results
+          path: results.sarif
